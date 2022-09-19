@@ -9,7 +9,7 @@ jobs:
   
     env:
       BUILD_CONFIG: 'Release'
-      SOLUTION: './Simple.Http/Simple.Http.sl'
+      SOLUTION: './Simple.Http/Simple.Http.sln'
   
 
     runs-on: ubuntu-latest
