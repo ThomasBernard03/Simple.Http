@@ -1,0 +1,28 @@
+name: CI/CD-Package-Simple-Http
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+  
+    env:
+      BUILD_CONFIG: 'Release'
+      SOLUTION: './Simple.Http/Simple.Http.sl'
+  
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore $SOLUTION
+    - name: Build
+      run: dotnet build $SOLUTION --configuration $BUILD_CONFIG --no-restore
+    - name: Publish
+      run: nuget push **\*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}} -SkipDuplicate -NoSymbols 
