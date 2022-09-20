@@ -16,9 +16,9 @@ If you use dependency injection you can register the service thanks his interfac
 After this you can use the library.
 
 ```C#
-SimpleHttpResult simpleHttpResult = await simpleHttpService.SendHttpRequest("https://myUrl/test", HttpMethod.Post, body); 
+var simpleHttpResult = await simpleHttpService.SendHttpRequest(url, HttpMethod.Post, body); 
 ```
-Here we sent an HttpRequest on the route : "https://myUrl/test" with the method Post and a body. In simpleHttpResult we obtain a result formatted : 
+Here we sent an HttpRequest on the route : url with the method Post and a body. In simpleHttpResult we obtain a result formatted : 
 ```C#
 public class SimpleHttpResult
 {
@@ -31,8 +31,20 @@ If an Exception was throwed we can get it into Exception. HttpStatusCode refer t
 
 ```C#
 // Send get method and get the content of the request
-SimpleHttpResult<ColorDTODown> simpleHttpResult = await simpleHttpService.SendHttpRequest<ColorDTODown>(url, HttpMethod.Get); 
+var simpleHttpResult = await simpleHttpService.SendHttpRequest<MyDTO>(url, HttpMethod.Get); 
+````
+
+
+MyDTO class can be like this : 
+
+```C#
+public class MyDTO
+{
+	[JsonProperty("name")]
+	public string Name { get; set; }
+}
 ```
+
 If we wan't to get returned content of our request we must use the method SendHttpRequest<TResult>. We can get the returned value in the property Result.
   
 ```C#
