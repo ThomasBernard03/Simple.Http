@@ -4,10 +4,12 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <Authors>ThomasBernard</Authors>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageIconUrl>https://raw.githubusercontent.com/ThomasBernard03/Simple.Http/dev/simple.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/ThomasBernard03/Simple.Http</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ThomasBernard03/Simple.Http</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
