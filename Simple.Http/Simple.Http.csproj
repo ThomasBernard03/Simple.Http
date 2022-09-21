@@ -8,6 +8,8 @@
     <Authors>ThomasBernard</Authors>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageIconUrl>https://raw.githubusercontent.com/ThomasBernard03/Simple.Http/dev/simple.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/ThomasBernard03/Simple.Http</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ThomasBernard03/Simple.Http</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
