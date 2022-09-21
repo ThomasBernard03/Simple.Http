@@ -7,18 +7,19 @@
 
 ## Installation 💿
 
-You can install the last version of the package with the command ```dotnet add package Simple.Http```. You can install it manualy in your IDE nuget package manager by searching Simple.Http.
+You can install the latest version of the package with the command ```dotnet add package Simple.Http```.
+You can also install it manualy in your IDE with the nuget package manager by searching Simple.Http.
 
 ## Getting started 🚀
 
-If you use dependency injection you can register the service thanks his interface IHttpService. Or, you can use the service manualy by creating a new instance of HttpService.
+If you're using dependency injection you can register the service thanks to the IHttpService interface. Or, you can use the service manualy by creating a new instance of HttpService.
 
 After this you can use the library.
 
 ```C#
 var simpleHttpResult = await simpleHttpService.SendHttpRequest(url, HttpMethod.Post, body); 
 ```
-Here we sent an HttpRequest on the route : url with the method Post and a body. In simpleHttpResult we obtain a result formatted : 
+Here we sent an HttpRequest on the route : url with a Post method and a body. In simpleHttpResult we obtain a formatted result : 
 ```C#
 public class SimpleHttpResult
 {
@@ -27,13 +28,12 @@ public class SimpleHttpResult
 	public HttpRequestMessage RequestMessage { get; set; }
 }
 ```
-If an Exception was throwed we can get it into Exception. HttpStatusCode refer to the request HttpStatusCode. The request message is the message sent to our url.
+If an Exception is thrown we can get it into Exception. HttpStatusCode refer to the HttpStatusCode's request. The request message is the message sent to our url.
 
 ```C#
-// Send get method and get the content of the request
+// Send a get method and get the request's content
 var simpleHttpResult = await simpleHttpService.SendHttpRequest<MyDTO>(url, HttpMethod.Get); 
 ````
-
 
 MyDTO class can be like this : 
 
@@ -45,7 +45,7 @@ public class MyDTO
 }
 ```
 
-If we wan't to get returned content of our request we must use the method SendHttpRequest<TResult>. We can get the returned value in the property Result.
+If we want to get returned our request's content we must use the method SendHttpRequest<TResult>. We can get the returned value in the Result property.
   
 ```C#
 public class SimpleHttpResult
@@ -59,6 +59,5 @@ public class SimpleHttpResult
 
 ## That's all ! ⭐
 
-If you want to help the project, put a star on Github. If you have any problems, please let me know by creating an issue on Github or by asking for a pull request.
+If you want to help the project, you can put a star on Github. If you have any problems, please let me know by creating an issue on Github or by asking for a pull request.
   
-
