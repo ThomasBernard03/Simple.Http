@@ -5,11 +5,11 @@
 [![forthebadge](https://img.shields.io/nuget/v/Simple.Http)](https://www.nuget.org/packages/Simple.Http/)
 [![forthebadge](https://img.shields.io/nuget/dt/Simple.Http)](https://www.nuget.org/packages/Simple.Http/)
 
-## Installation
+## Installation 💿
 
 You can install the last version of the package with the command ```dotnet add package Simple.Http```. You can install it manualy in your IDE nuget package manager by searching Simple.Http.
 
-## Getting started
+## Getting started 🚀
 
 If you use dependency injection you can register the service thanks his interface IHttpService. Or, you can use the service manualy by creating a new instance of HttpService.
 
@@ -57,7 +57,7 @@ public class SimpleHttpResult
 }
 ```
 
-## That's all !
+## That's all ! ⭐
 
 If you want to help the project, put a star on Github. If you have any problems, please let me know by creating an issue on Github or by asking for a pull request.
   
