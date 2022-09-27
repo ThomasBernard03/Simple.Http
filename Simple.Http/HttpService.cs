@@ -43,7 +43,7 @@ public class HttpService : IHttpService
 		return simpleHttpResult;
 	}
 
-	public async Task<SimpleHttpResult<TResult>> SendHttpRequest<TResult>(string url, HttpMethod httpMethod, object body = null, string bearer = "")
+	public async Task<SimpleHttpResult<TResult>> SendRequestAsync<TResult>(string url, HttpMethod httpMethod, object body = null, string bearer = "")
 	{
 		var simpleHttpResult = new SimpleHttpResult<TResult>();
 
