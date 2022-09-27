@@ -24,5 +24,5 @@ public interface IHttpService
 	/// <param name="body">The body to send (it will then be serialized)</param>
 	/// <param name="bearer">The bearer token</param>
 	/// <returns>This method returns an HttpResult, containing information about the request and the result</returns>
-	Task<SimpleHttpResult<TResult>> SendHttpRequest<TResult>(string url, HttpMethod httpMethod, object body = null, string bearer = "");
+	Task<SimpleHttpResult<TResult>> SendRequestAsync<TResult>(string url, HttpMethod httpMethod, object body = null, string bearer = "");
 }
