@@ -17,7 +17,7 @@ If you're using dependency injection you can register the service thanks to the 
 After this you can use the library.
 
 ```C#
-var simpleHttpResult = await simpleHttpService.SendHttpRequest(url, HttpMethod.Post, body); 
+var simpleHttpResult = await simpleHttpService.SendRequestAsync(url, HttpMethod.Post, body); 
 ```
 Here we sent an HttpRequest on the route : url with a Post method and a body. In simpleHttpResult we obtain a formatted result : 
 ```C#
@@ -32,7 +32,7 @@ If an Exception is thrown we can get it into Exception. HttpStatusCode refer to 
 
 ```C#
 // Send a get method and get the request's content
-var simpleHttpResult = await simpleHttpService.SendHttpRequest<MyDTO>(url, HttpMethod.Get); 
+var simpleHttpResult = await simpleHttpService.SendRequestAsync<MyDTO>(url, HttpMethod.Get); 
 ````
 
 MyDTO class can be like this : 
@@ -45,7 +45,7 @@ public class MyDTO
 }
 ```
 
-If we want to get returned our request's content we must use the method SendHttpRequest<TResult>. We can get the returned value in the Result property.
+If we want to get returned our request's content we must use the method SendRequestAsync<TResult>. We can get the returned value in the Result property.
   
 ```C#
 public class SimpleHttpResult
