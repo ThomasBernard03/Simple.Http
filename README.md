@@ -1,4 +1,4 @@
-# SimpleHttpService
+# Simple.Http
 
 ![twitter_header_photo_2](https://user-images.githubusercontent.com/67638928/191241272-550df522-215c-4af6-b41d-daa84de90763.png)
 
