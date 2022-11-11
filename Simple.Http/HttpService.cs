@@ -10,10 +10,23 @@ public class HttpService : IHttpService
 
 	public HttpService()
 	{
-		if (HttpClient == null)
-			HttpClient = new HttpClient();
+		HttpClient ??= new HttpClient();
 	}
 
+	private async Task<HttpResponseMessage> GetContentAsync(string url, HttpMethod httpMethod, object body = null, string bearer = "")
+	{
+		if (!string.IsNullOrEmpty(bearer))
+			HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearer);
+		
+		// Set the httpMethod and the url
+		var httpRequestMessage = new HttpRequestMessage() { Method = httpMethod, RequestUri = new Uri(url)};
+
+		// If the body is not null we add it in the request content
+		if (body != null)
+			httpRequestMessage.Content = JsonContent.Create(body);
+
+		return await HttpClient.SendAsync(httpRequestMessage);
+	}
 
 	public async Task<SimpleHttpResult> SendRequestAsync(string url, HttpMethod httpMethod, object body = null, string bearer = "")
 	{
@@ -21,25 +34,18 @@ public class HttpService : IHttpService
 
 		try
 		{
-			// If bearer isnt null, add to request header
-			if (!string.IsNullOrEmpty(bearer))
-				HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearer);
+			var reponse = await GetContentAsync(url, httpMethod, body, bearer);
 
-			var httpRequestMessage = new HttpRequestMessage() { Method = httpMethod, RequestUri = new Uri(url) };
+			simpleHttpResult.HttpStatusCode = reponse?.StatusCode ?? System.Net.HttpStatusCode.NotFound;
+			simpleHttpResult.RequestMessage = reponse?.RequestMessage;
 
-			if (body != null)
-				httpRequestMessage.Content = JsonContent.Create(body);
-
-			var response = await HttpClient.SendAsync(httpRequestMessage);
-			simpleHttpResult.RequestMessage = response?.RequestMessage;
-			simpleHttpResult.HttpStatusCode = response?.StatusCode ?? System.Net.HttpStatusCode.NotFound;
-
+			return new SimpleHttpResult(reponse);
 		}
 		catch (Exception ex)
 		{
 			simpleHttpResult.Exception = ex;
 		}
-
+		
 		return simpleHttpResult;
 	}
 
@@ -49,16 +55,7 @@ public class HttpService : IHttpService
 
 		try
 		{
-			// If bearer isnt null, add to request header
-			if (!string.IsNullOrEmpty(bearer))
-				HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearer);
-
-			var httpRequestMessage = new HttpRequestMessage() { Method = httpMethod, RequestUri = new Uri(url) };
-
-			if (body != null)
-				httpRequestMessage.Content = JsonContent.Create(body);
-
-			var response = await HttpClient.SendAsync(httpRequestMessage);
+			var response = await GetContentAsync(url, httpMethod, body, bearer);
 			simpleHttpResult.RequestMessage = response?.RequestMessage;
 			simpleHttpResult.HttpStatusCode = response?.StatusCode ?? System.Net.HttpStatusCode.NotFound;
 
