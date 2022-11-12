@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>1.1.0</Version>
+    <Version>2.0.0</Version>
     <Authors>ThomasBernard</Authors>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageIconUrl>https://raw.githubusercontent.com/ThomasBernard03/Simple.Http/dev/simple.png</PackageIconUrl>
