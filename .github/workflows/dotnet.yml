@@ -24,5 +24,7 @@ jobs:
       run: dotnet restore $SOLUTION
     - name: Build
       run: dotnet build $SOLUTION --configuration $BUILD_CONFIG --no-restore
+    - name : Tests
+      run: dotnet test
     - name: Publish
       run: nuget push **\*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}} -SkipDuplicate -NoSymbols 
